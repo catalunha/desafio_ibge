@@ -1,0 +1,1 @@
+class CidadeDbException implements Exception {}
