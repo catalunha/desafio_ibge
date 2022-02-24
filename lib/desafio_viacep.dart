@@ -1,11 +1,8 @@
-import 'package:desafio_viacep/data/model/estado_model.dart';
 import 'package:desafio_viacep/data/repository/api/distrito_api_repository.dart';
-import 'package:desafio_viacep/data/repository/api/estado_api_repository.dart';
 import 'package:desafio_viacep/data/repository/database/database_connection.dart';
 import 'package:desafio_viacep/data/repository/database/distrito_db_repository.dart';
 import 'package:desafio_viacep/data/repository/database/estado_db_repository.dart';
 import 'package:dio/dio.dart';
-import 'package:mysql1/mysql1.dart';
 
 void execute() async {
   var dio = Dio();
