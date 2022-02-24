@@ -1,4 +1,51 @@
-# api
+
+Desafio final
+
+# APIs
+https://servicodados.ibge.gov.br/api/v1/localidades/estados
+https://servicodados.ibge.gov.br/api/v1/localidades/estados/35/distritos
+
+
+# Tabelas - proposta 1
+```
+CREATE TABLE estado (
+  id int not null primary key auto_increment,
+  uf varchar(2),
+  nome varchar(255)
+);
+
+
+CREATE TABLE cidade (
+  id int not null primary key auto_increment,
+  id_uf int,
+  nome varchar(255),
+   FOREIGN KEY (id_uf)
+      REFERENCES estado(id)
+);​
+```
+# tabelas - proposta 2
+No campo uuid usem este package: https://pub.dev/packages/uuid
+```
+drop table estado;
+CREATE TABLE estado (
+  uuid varchar(36) not null primary key,
+  id int,
+  sigla varchar(2),
+  nome varchar(255)
+);
+drop table distrito;
+CREATE TABLE distrito (
+  uuid varchar(36) not null primary key,
+  uuidEstado varchar(36),
+  id varchar(25),
+  nome varchar(255),
+   FOREIGN KEY (uuidEstado)
+      REFERENCES estado(uuid)
+);​
+```
+
+
+# Resumo dos jsons
 Estado
 ```json
 [
@@ -44,25 +91,4 @@ Distrito
         }
       },
 ]
-```
-
-# tabelas
-123e4567-e89b-12d3-a456-426655440000
-```
-drop table estado;
-CREATE TABLE estado (
-  uuid varchar(36) not null primary key,
-  id int,
-  sigla varchar(2),
-  nome varchar(255)
-);
-drop table distrito;
-CREATE TABLE distrito (
-  uuid varchar(36) not null primary key,
-  uuidEstado varchar(36),
-  id varchar(25),
-  nome varchar(255),
-   FOREIGN KEY (uuidEstado)
-      REFERENCES estado(uuid)
-);​
 ```
