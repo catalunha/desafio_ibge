@@ -1,16 +1,52 @@
 import 'package:desafio_viacep/data/model/distrito_model.dart';
+import 'package:desafio_viacep/data/repository/database/database_connection.dart';
 import 'package:desafio_viacep/data/repository/database/exception/distrito_db_exception.dart';
 import 'package:mysql1/mysql1.dart';
 import 'package:uuid/uuid.dart';
 
 class DistritoDbRepository {
-  final MySqlConnection _conn;
-  DistritoDbRepository({required MySqlConnection conn}) : _conn = conn;
+  MySqlConnection? _conn;
+  DatabaseConnection? _databaseConnection;
+  DistritoDbRepository() {
+    onInit();
+  }
+
+  void onInit() async {
+    try {
+      _databaseConnection = DatabaseConnection();
+      // _conn = await _databaseConnection!.openConnection();
+    } on Exception catch (e) {
+      print('Erro em EstadoDbRepository2. Ao conectar com banco...');
+      rethrow;
+    }
+  }
+
+  Future<bool> startConn() async {
+    try {
+      _conn = await _databaseConnection!.openConnection();
+    } on Exception catch (e) {
+      return Future.value(false);
+    }
+
+    return Future.value(true);
+  }
+
+  Future<bool> closeConn() async {
+    try {
+      await _conn!.close();
+    } on Exception catch (e) {
+      return Future.value(false);
+    }
+
+    return Future.value(true);
+  }
 
   Future<bool> postAll(
       {required List<DistritoModel> distritoList,
       required String uuidEstado}) async {
     try {
+      await startConn();
+
       assert(distritoList[0].estadoModel != null || uuidEstado.isNotEmpty);
       var listFields = distritoList
           .map((distrito) => [
@@ -23,7 +59,7 @@ class DistritoDbRepository {
       for (var item in listFields) {
         print(item);
       }
-      var result = await _conn.queryMulti(
+      var result = await _conn!.queryMulti(
           'insert into distrito(uuid,uuidEstado,id,nome) values(?,?,?,?)',
           listFields);
       if (distritoList.length != result.length) {
@@ -39,13 +75,14 @@ class DistritoDbRepository {
       print(e);
       return Future.value(false);
     } finally {
-      _conn.close();
+      await closeConn();
     }
   }
 
   Future<List<DistritoModel>> getAll() async {
     try {
-      var result = await _conn.query('select * from distrito');
+      await startConn();
+      var result = await _conn!.query('select * from distrito');
       var estado = result.map((e) => DistritoModel.fromMap(e.fields)).toList();
       return estado;
     } on MySqlException catch (e) {
@@ -53,7 +90,7 @@ class DistritoDbRepository {
       print(e);
       return <DistritoModel>[];
     } finally {
-      _conn.close();
+      await closeConn();
     }
   }
 }

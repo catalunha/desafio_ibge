@@ -3,11 +3,22 @@ import 'package:desafio_viacep/data/repository/api/exception/distrito_api_except
 import 'package:dio/dio.dart';
 
 class DistritoApiRepository {
-  final Dio _dio;
-  DistritoApiRepository({required Dio dio}) : _dio = dio;
+  Dio? _dio;
+  DistritoApiRepository() {
+    onInit();
+  }
+  void onInit() async {
+    try {
+      _dio = Dio();
+    } on Exception catch (e) {
+      print('Erro em EstadoApiRepository. Ao conectar com api...');
+      rethrow;
+    }
+  }
+
   Future<List<DistritoModel>> getAll(int estadoId) async {
     try {
-      final response = await _dio.get(
+      final response = await _dio!.get(
           'https://servicodados.ibge.gov.br/api/v1/localidades/estados/$estadoId/distritos');
       if (response.statusCode != 200) {
         throw CidadeApiException();

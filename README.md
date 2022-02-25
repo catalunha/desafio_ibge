@@ -1,12 +1,14 @@
 
-Desafio final
+# Desafio final
 
-# APIs
+## APIs
 https://servicodados.ibge.gov.br/api/v1/localidades/estados
 https://servicodados.ibge.gov.br/api/v1/localidades/estados/35/distritos
 
+## Tabelas
+Escolha uma das propostass e resolva os detalhes. Duvidas na comunidade.
 
-# Tabelas - proposta 1
+### Proposta 1
 ```
 CREATE TABLE estado (
   id int not null primary key auto_increment,
@@ -23,7 +25,7 @@ CREATE TABLE cidade (
       REFERENCES estado(id)
 );​
 ```
-# tabelas - proposta 2
+### Proposta 2
 No campo uuid usem este package: https://pub.dev/packages/uuid
 ```
 drop table estado;
