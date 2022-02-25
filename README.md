@@ -94,3 +94,14 @@ Distrito
       },
 ]
 ```
+# Estrutura
+```
+[d] lib
+  [d] data
+    [d] model
+      [d] repository
+      [-] estado_repository(source:)
+        [d] api1
+          [-] estado_source()
+        [d] db1
+```
