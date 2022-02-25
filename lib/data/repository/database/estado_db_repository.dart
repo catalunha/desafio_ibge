@@ -53,15 +53,16 @@ class EstadoDbRepository {
       if (estadoList.length != result.length) {
         throw EstadoDbException();
       }
-      return true;
+      return Future.value(true);
     } on MySqlException catch (e) {
       print('Erro MySqlException: EstadoDbRepository.postAll');
       print(e);
-      return false;
+      return Future.value(false);
+      ;
     } on EstadoDbException catch (e) {
       print('Erro EstadoDbException: EstadoDbRepository.postAll');
       print(e);
-      return false;
+      return Future.value(false);
     } finally {
       _conn.close();
     }

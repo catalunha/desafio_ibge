@@ -29,15 +29,15 @@ class DistritoDbRepository {
       if (distritoList.length != result.length) {
         throw CidadeDbException();
       }
-      return true;
+      return Future.value(true);
     } on MySqlException catch (e) {
       print('Erro MySqlException: CidadeDbRepository.postAll');
       print(e);
-      return false;
+      return Future.value(false);
     } on CidadeDbException catch (e) {
       print('Erro CidadeDbException: CidadeDbRepository.postAll');
       print(e);
-      return false;
+      return Future.value(false);
     } finally {
       _conn.close();
     }
