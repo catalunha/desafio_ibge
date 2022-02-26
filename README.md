@@ -1,4 +1,7 @@
 
+# Modos
+Verifique as branchs pois tem modos diferentes de resolver
+
 # Desafio final
 
 ## APIs
