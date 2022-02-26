@@ -1,17 +1,17 @@
+import 'package:desafio_viacep/data/repository/api1/exception/estado_api_exception.dart';
+import 'package:desafio_viacep/data/repository/database1/database_connection.dart';
+import 'package:desafio_viacep/data/repository/database1/exception/estado_db_exception.dart';
 import 'package:desafio_viacep/data/repository/estado_repository.dart';
 import 'package:mysql1/mysql1.dart';
 import 'package:uuid/uuid.dart';
 
 import 'package:desafio_viacep/data/model/estado_model.dart';
-import 'package:desafio_viacep/data/repository/api/exception/estado_api_exception.dart';
-import 'package:desafio_viacep/data/repository/database/database_connection.dart';
-import 'package:desafio_viacep/data/repository/database/exception/estado_db_exception.dart';
 
-class EstadoDbRepository extends EstadoRepository {
+class EstadoRepositoryDb1 extends EstadoRepository {
   MySqlConnection? _conn;
   DatabaseConnection? _databaseConnection;
   // EstadoDbRepository2()
-  EstadoDbRepository() {
+  EstadoRepositoryDb1() {
     onInit();
   }
 

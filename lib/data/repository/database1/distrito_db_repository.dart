@@ -1,6 +1,6 @@
 import 'package:desafio_viacep/data/model/distrito_model.dart';
-import 'package:desafio_viacep/data/repository/database/database_connection.dart';
-import 'package:desafio_viacep/data/repository/database/exception/distrito_db_exception.dart';
+import 'package:desafio_viacep/data/repository/database1/database_connection.dart';
+import 'package:desafio_viacep/data/repository/database1/exception/distrito_db_exception.dart';
 import 'package:mysql1/mysql1.dart';
 import 'package:uuid/uuid.dart';
 

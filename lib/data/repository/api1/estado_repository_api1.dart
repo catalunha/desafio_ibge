@@ -1,11 +1,11 @@
 import 'package:desafio_viacep/data/model/estado_model.dart';
-import 'package:desafio_viacep/data/repository/api/exception/estado_api_exception.dart';
+import 'package:desafio_viacep/data/repository/api1/exception/estado_api_exception.dart';
 import 'package:desafio_viacep/data/repository/estado_repository.dart';
 import 'package:dio/dio.dart';
 
-class EstadoApiRepository extends EstadoRepository {
+class EstadoRepositoryApi1 extends EstadoRepository {
   Dio? _dio;
-  EstadoApiRepository() {
+  EstadoRepositoryApi1() {
     onInit();
   }
   void onInit() async {

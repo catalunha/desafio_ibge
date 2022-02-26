@@ -1,5 +1,5 @@
 import 'package:desafio_viacep/data/model/distrito_model.dart';
-import 'package:desafio_viacep/data/repository/api/exception/distrito_api_exception.dart';
+import 'package:desafio_viacep/data/repository/api1/exception/distrito_api_exception.dart';
 import 'package:dio/dio.dart';
 
 class DistritoApiRepository {
