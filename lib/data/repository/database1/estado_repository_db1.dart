@@ -1,4 +1,3 @@
-import 'package:desafio_viacep/data/repository/api1/exception/estado_api_exception.dart';
 import 'package:desafio_viacep/data/repository/database1/database_connection.dart';
 import 'package:desafio_viacep/data/repository/database1/exception/estado_db_exception.dart';
 import 'package:desafio_viacep/data/repository/estado_repository.dart';
@@ -65,13 +64,13 @@ class EstadoRepositoryDb1 extends EstadoRepository {
     try {
       await startConn();
       var result = await _conn!.query('select * from estado where id=?', [id]);
-      print(result.length);
+      // print(result.length);
       if (result.length > 1) {
-        throw EstadoEmptyResultApiException();
+        throw EstadoMoreThanOneDb1Exception();
       }
       var estado = EstadoModel.fromMap(result.first.fields);
       return estado;
-    } on EstadoEmptyResultApiException catch (e) {
+    } on EstadoMoreThanOneDb1Exception catch (e) {
       print('Erro EstadoEmptyResultApiException: EstadoDbRepository2.getById');
       print(e);
       return null;

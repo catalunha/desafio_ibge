@@ -39,4 +39,10 @@ class EstadoRepositoryApi1 extends EstadoRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<EstadoModel?> getById(int id) {
+    // TODO: implement getById
+    return Future.value(null);
+  }
 }

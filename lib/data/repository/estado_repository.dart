@@ -5,6 +5,7 @@ import 'package:desafio_viacep/data/repository/database1/estado_repository_db1.d
 
 abstract class EstadoRepository {
   Future<List<EstadoModel>> getAll();
+  Future<EstadoModel?> getById(int id);
 }
 
 enum Source { api1, db1 }
