@@ -8,21 +8,18 @@ import 'package:desafio_viacep/data/repository/api/exception/estado_api_exceptio
 import 'package:desafio_viacep/data/repository/database/database_connection.dart';
 import 'package:desafio_viacep/data/repository/database/exception/estado_db_exception.dart';
 
+abstract class EstadoRepository {
+  Future<List<EstadoModel>> getAll();
+}
+
 enum Source { api1, db1 }
 
-class EstadoRepository {
-  final EstadoApiRepository _estadoApiRepository = EstadoApiRepository();
-  Source _source;
-  set source(value) => _source = value;
-  Source get source => _source;
-  EstadoRepository({Source source = Source.api1}) : _source = source;
-  Future<List<EstadoModel>> getAll() async {
+class EstadoRepositoryFactory {
+  EstadoRepository getRepository({Source source = Source.api1}) {
     if (source == Source.db1) {
-      final EstadoDbRepository _estadoDbRepository = EstadoDbRepository();
-      return await _estadoDbRepository.getAll();
+      return EstadoDbRepository();
     } else {
-      // Source.api1
-      return await _estadoApiRepository.getAll();
+      return EstadoApiRepository();
     }
   }
 }

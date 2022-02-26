@@ -9,11 +9,13 @@ import 'package:dio/dio.dart';
 void execute() async {
   // //+++ listando estado da api e do db
 
-  EstadoRepository estadoRepository = EstadoRepository();
+  EstadoRepository estadoRepository = EstadoRepositoryFactory().getRepository();
   var estadoModelList = await estadoRepository.getAll();
   print(estadoModelList.first);
-  estadoRepository.source = Source.db1;
-  var estadoModelList2 = await estadoRepository.getAll();
+  EstadoRepository estadoRepository2 =
+      EstadoRepositoryFactory().getRepository(source: Source.db1);
+
+  var estadoModelList2 = await estadoRepository2.getAll();
   print(estadoModelList2.first);
 
   // //+++ Api -> EstadoModel

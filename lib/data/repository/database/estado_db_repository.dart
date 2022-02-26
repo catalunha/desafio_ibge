@@ -1,3 +1,4 @@
+import 'package:desafio_viacep/data/repository/estado_repository.dart';
 import 'package:mysql1/mysql1.dart';
 import 'package:uuid/uuid.dart';
 
@@ -6,7 +7,7 @@ import 'package:desafio_viacep/data/repository/api/exception/estado_api_exceptio
 import 'package:desafio_viacep/data/repository/database/database_connection.dart';
 import 'package:desafio_viacep/data/repository/database/exception/estado_db_exception.dart';
 
-class EstadoDbRepository {
+class EstadoDbRepository extends EstadoRepository {
   MySqlConnection? _conn;
   DatabaseConnection? _databaseConnection;
   // EstadoDbRepository2()
