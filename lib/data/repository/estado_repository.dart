@@ -1,9 +1,7 @@
 import 'package:desafio_viacep/data/repository/api1/estado_repository_api1.dart';
-import 'package:desafio_viacep/data/repository/database/estado_repository_db1.dart';
-import 'package:mysql1/mysql1.dart';
-import 'package:uuid/uuid.dart';
 
 import 'package:desafio_viacep/data/model/estado_model.dart';
+import 'package:desafio_viacep/data/repository/database1/estado_repository_db1.dart';
 
 abstract class EstadoRepository {
   Future<List<EstadoModel>> getAll();

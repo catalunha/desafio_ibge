@@ -1,6 +1,4 @@
-import 'package:desafio_viacep/data/repository/database/estado_repository_db1.dart';
 import 'package:desafio_viacep/data/repository/estado_repository.dart';
-import 'package:dio/dio.dart';
 
 void execute() async {
   // //+++ listando estado da api e do db
