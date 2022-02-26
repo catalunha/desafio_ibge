@@ -15,7 +15,7 @@ abstract class EstadoRepository {
 enum Source { api1, db1 }
 
 class EstadoRepositoryFactory {
-  EstadoRepository getRepository({Source source = Source.api1}) {
+  EstadoRepository getSource({Source source = Source.api1}) {
     if (source == Source.db1) {
       return EstadoDbRepository();
     } else {

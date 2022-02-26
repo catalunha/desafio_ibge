@@ -17,6 +17,7 @@ class EstadoApiRepository extends EstadoRepository {
     }
   }
 
+  @override
   Future<List<EstadoModel>> getAll() async {
     try {
       final response = await _dio!

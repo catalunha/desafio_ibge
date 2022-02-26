@@ -45,6 +45,7 @@ class EstadoDbRepository extends EstadoRepository {
     return Future.value(true);
   }
 
+  @override
   Future<List<EstadoModel>> getAll() async {
     try {
       await startConn();
