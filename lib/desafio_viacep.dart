@@ -1,7 +1,7 @@
 import 'package:desafio_viacep/data/repository/estado_repository.dart';
 
 void execute() async {
-  // // //+++ listando estado da api e do db
+  // // //+++ listando estados da api e do db
   // EstadoRepository estadoRepository = EstadoRepositoryFactory().getSource();
   // var estadoModelList = await estadoRepository.getAll();
   // print(estadoModelList.first);
@@ -12,14 +12,13 @@ void execute() async {
   // var estadoModelList2 = await estadoRepository2.getAll();
   // print(estadoModelList2.first);
 
-  // //+++ listando estado da api e do db
+  //+++ lista estado por id da api e do db
   EstadoRepository estadoRepository3 = EstadoRepositoryFactory().getSource();
   var estadoModelList3 = await estadoRepository3.getById(11);
   print(estadoModelList3);
 
   EstadoRepository estadoRepository4 =
       EstadoRepositoryFactory().getSource(source: Source.db1);
-
   var estadoModelList4 = await estadoRepository4.getById(11);
   print(estadoModelList4);
 

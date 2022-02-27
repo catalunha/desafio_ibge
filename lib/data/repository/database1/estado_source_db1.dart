@@ -6,11 +6,11 @@ import 'package:uuid/uuid.dart';
 
 import 'package:desafio_viacep/data/model/estado_model.dart';
 
-class EstadoRepositoryDb1 extends EstadoRepository {
+class EstadoSourceDb1 extends EstadoRepository {
   MySqlConnection? _conn;
   DatabaseConnection? _databaseConnection;
   // EstadoDbRepository2()
-  EstadoRepositoryDb1() {
+  EstadoSourceDb1() {
     onInit();
   }
 
@@ -91,7 +91,7 @@ class EstadoRepositoryDb1 extends EstadoRepository {
       var result = await _conn!.queryMulti(
           'insert into estado(uuid,id,sigla,nome) values(?,?,?,?)', listFields);
       if (estadoList.length != result.length) {
-        throw EstadoDbException();
+        throw EstadoSourceDb1Exception();
       }
       return Future.value(true);
     } on MySqlException catch (e) {
@@ -99,7 +99,7 @@ class EstadoRepositoryDb1 extends EstadoRepository {
       print(e);
       return Future.value(false);
       ;
-    } on EstadoDbException catch (e) {
+    } on EstadoSourceDb1Exception catch (e) {
       print('Erro EstadoDbException: EstadoDbRepository2.postAll');
       print(e);
       return Future.value(false);
